@@ -1,16 +1,17 @@
-# AI Assistant System — RAG + Caching Architecture (Professional Showcase)
+# AI Assistant System — RAG + Caching Architecture (System Design Showcase)
 
 ## Overview
 
-This project is a modular AI Assistant system built on a production-style architecture combining:
+This project is a **modular AI Assistant system architecture showcase** designed around modern production-style AI system design principles.
+
+It demonstrates how to combine:
 
 * Retrieval-Augmented Generation (RAG)
 * Multi-layer caching strategies
 * Scalable backend orchestration
+* Full-stack AI system design
 
-It demonstrates how to design and implement an AI system that integrates conversational intelligence with document-grounded retrieval and optimized inference performance.
-
-The focus of the system is not only functionality, but also architecture design, scalability, and performance optimization patterns commonly used in real-world AI products.
+The focus is on **architecture, scalability, and engineering design**, rather than source code implementation.
 
 ---
 
@@ -18,23 +19,23 @@ The focus of the system is not only functionality, but also architecture design,
 
 This architecture addresses three core challenges in modern AI systems:
 
-### 1. Cost Reduction for LLM Usage
+### 1. Reduce LLM Cost
 
 * Exact caching for repeated queries (O(1) lookup)
-* Semantic caching for similar but non-identical queries
-* Reduced redundant LLM inference calls
+* Semantic caching for similar queries using embeddings
+* Reduced redundant inference calls
 
-### 2. Improved Response Quality
+### 2. Improve Response Quality
 
 * Retrieval-Augmented Generation (RAG)
-* Grounded responses based on document context
-* Reduced hallucination through external knowledge grounding
+* Context-grounded responses using external documents
+* Reduced hallucination through retrieval-based augmentation
 
-### 3. Scalability and Maintainability
+### 3. Ensure Scalability
 
 * Modular backend design
 * Clear service separation
-* Containerized deployment strategy
+* Containerized deployment approach
 
 ---
 
@@ -66,11 +67,11 @@ Exact Cache   Semantic Cache     RAG Engine
 
 ---
 
-## Core System Components
+## Core Components
 
-## 1. Frontend (React Chat Interface)
+## 1. Frontend (React Chat UI)
 
-### Technology Stack
+### Stack
 
 * React
 * Vite
@@ -82,7 +83,7 @@ Exact Cache   Semantic Cache     RAG Engine
 * Chat interface rendering
 * Message state management
 * API communication with backend
-* Response rendering and UI updates
+* Response visualization
 
 ---
 
@@ -93,28 +94,28 @@ Exact Cache   Semantic Cache     RAG Engine
 * Request validation and routing
 * AI pipeline orchestration
 * Cache coordination (exact + semantic)
-* Triggering RAG pipeline execution
-* Response formatting and delivery
+* RAG execution triggering
+* Response formatting
 
 ---
 
 ## 3. Caching System
 
-### 3.1 Exact Cache (Redis)
+### Exact Cache (Redis)
 
-* Direct key-value query matching
+* Direct key-value matching
 * O(1) lookup performance
-* Eliminates redundant LLM calls for repeated queries
+* Eliminates repeated LLM calls for identical queries
 
-### 3.2 Semantic Cache (Redis + Embeddings)
+### Semantic Cache (Redis + Embeddings)
 
 * Embedding-based similarity search
-* Retrieves responses for semantically similar queries
-* Optimizes token usage and inference cost
+* Reuses responses for semantically similar queries
+* Optimizes inference cost and latency
 
 ---
 
-## 4. RAG Engine (Retrieval-Augmented Generation Core)
+## 4. RAG Engine (Retrieval-Augmented Generation)
 
 ### Pipeline Flow
 
@@ -128,7 +129,7 @@ User Query → Embedding → Similarity Search → Context Assembly → LLM
 * Document preprocessing and chunking
 * Embedding generation
 * Vector similarity search
-* Context construction for LLM input
+* Context assembly for LLM input
 
 ---
 
@@ -138,26 +139,26 @@ User Query → Embedding → Similarity Search → Context Assembly → LLM
 
 Used for:
 
-* Chat history persistence
-* Document metadata storage
-* System state management
+* Chat history storage
+* Document metadata
+* System persistence
 
-### Vector Storage
+### Vector Support
 
 * Embedding storage
-* Similarity indexing for retrieval
+* Similarity indexing (pgvector-ready design)
 
 ---
 
 ## 6. Infrastructure Layer
 
-The system is fully containerized for portability and deployment consistency.
+The system is fully containerized for consistency and scalability.
 
 ### Technologies
 
 * Docker
 * Docker Compose
-* Nginx (reverse proxy for production routing)
+* Nginx (production routing layer)
 
 ### Services
 
@@ -171,26 +172,26 @@ The system is fully containerized for portability and deployment consistency.
 
 ## Architectural Highlights
 
-### 1. Multi-Layer Caching Strategy
+### Multi-Layer Caching Strategy
 
 * Exact cache for deterministic responses
 * Semantic cache for intelligent reuse of similar queries
 
-### 2. RAG-Based Intelligence
+### RAG-Based Intelligence
 
 * Retrieval-augmented generation pipeline
-* Reduced hallucination through grounded context
+* Context grounding to reduce hallucination
 
-### 3. Modular Backend Design
+### Modular Backend Design
 
 Clear separation of:
 
 * API layer
 * Cache layer
 * RAG engine
-* Data persistence layer
+* Data layer
 
-### 4. Scalable System Design
+### Scalable System Design
 
 Designed for:
 
@@ -200,7 +201,7 @@ Designed for:
 
 ---
 
-## Technology Stack Summary
+## Technology Stack
 
 ### Frontend
 
@@ -217,9 +218,8 @@ Designed for:
 ### Database
 
 * PostgreSQL
-* pgvector (vector extension support)
 
-### Cache
+### Cache Layer
 
 * Redis (Exact + Semantic caching)
 
@@ -231,53 +231,57 @@ Designed for:
 
 ---
 
-## Performance Optimization Strategy
+## Performance Strategy
 
-The system is optimized around:
+The system is optimized for:
 
-* Minimizing LLM inference calls
+* Reducing LLM inference calls
 * Maximizing cache hit ratio
-* Reducing token consumption via context optimization
+* Minimizing token usage via context optimization
 * Improving response latency
-* Efficient retrieval of relevant context only
+* Efficient retrieval of relevant information only
 
 ---
 
 ## Key Concepts Demonstrated
 
-This project showcases understanding of:
+This project demonstrates understanding of:
 
 * Retrieval-Augmented Generation (RAG)
 * Vector embeddings and similarity search
-* Semantic caching architectures
-* Backend orchestration patterns
-* Full-stack AI system design
-* Containerized deployment strategies
-* Scalable distributed system principles
+* Semantic caching systems
+* Backend orchestration design patterns
+* Full-stack AI system architecture
+* Containerized deployment
+* Scalable distributed system design
 
 ---
 
 ## Future Improvements
 
-Planned enhancements include:
-
 * Streaming LLM responses
 * Redis cluster scaling
 * Background job processing (Celery / async queues)
-* Observability layer (logging, metrics, tracing)
+* Observability (logs, metrics, tracing)
 * Advanced retrieval reranking
-* Multi-tenant architecture support
+* Multi-tenant architecture
 * Kubernetes deployment
+
+---
+
+## 📦 Repository Scope
+
+This repository is a **public system design showcase** of a production-style AI Assistant architecture. It focuses on architecture, system design, and scalability patterns rather than source code implementation.
 
 ---
 
 ## Summary
 
-This system represents a production-inspired AI assistant architecture focused on:
+This project represents a **modular, scalable AI assistant architecture** designed to explore:
 
 * Intelligent caching strategies
-* Retrieval-augmented generation pipelines
+* Retrieval-Augmented Generation systems
 * Scalable backend orchestration
-* Modular and maintainable system design
+* Production-style system design principles
 
-It serves as a reference implementation for building high-performance AI systems with modern engineering practices.
+It serves as a reference architecture for building high-performance AI systems using modern engineering practices.
